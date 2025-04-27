@@ -44,7 +44,7 @@
   <Setting Id="50" Label="Defeat Hipparchos" ToolTip="Sea\" Parent="42008"/>
   <Setting Id="51" Label="Destroy the Pillar of Quakes" ToolTip="Sea\" Parent="42008"/>
   <Setting Id="52" Label="Calm the Seas" ToolTip="Sea\" Parent="42008"/>
-  <Setting Id="389" Label="Return to the Olympian Gates" ToolTip="\Agora-gate" Parent="42008"/>
+  <Setting Id="389" Label="X Return to the Olympian Gates" ToolTip="\Agora-gate" State="False" Parent="42008"/>
   <Setting Id="14345" Label="Find the Trident of Poseidon" ToolTip="Sea\Sea-hub" Parent="42008"/>
   <Setting Id="42009" Label="============= Crest of Ares ============="/>
   <Setting Id="38" Label="Find the Crest of Ares" ToolTip="Acropolis\Ares" Parent="42009"/>
