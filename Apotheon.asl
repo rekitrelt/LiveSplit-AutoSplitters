@@ -147,22 +147,39 @@ split
             string splitKey = obj.ToString();
             if (settings[splitKey])
             {
-                print("objective split");
+                print("objective split " + splitKey);
                 return vars.CompletedSplits.Add(splitKey);
             }
         }
     }
-    if (
-        (settings["-1"] && !old.ApolloLyre && current.ApolloLyre) ||
-        (settings["-2"] && !old.ArtemisBow && current.ArtemisBow) ||
-        (settings["-3"] && !old.PosiedonSymbol && current.PosiedonSymbol) ||
-        (settings["-4"] && !old.AresHelmet && current.AresHelmet) ||
-        (settings["-5"] && !old.AthenaSymbol && current.AthenaSymbol) ||
-        (settings["-6"] && !old.DionysusCup && current.DionysusCup) ||
-        (settings["-7"] && !old.HeraPlume && current.HeraPlume)
-    ) {
-        print("found a progression based item");
-        return true; 
+
+    if (settings["-1"] && !old.ApolloLyre && current.ApolloLyre) {
+        print("Progression item: ApolloLyre");
+        return true;
+    }
+    if (settings["-2"] && !old.ArtemisBow && current.ArtemisBow) {
+        print("Progression item: ArtemisBow");
+        return true;
+    }
+    if (settings["-3"] && !old.PosiedonSymbol && current.PosiedonSymbol) {
+        print("Progression item: PosiedonSymbol");
+        return true;
+    }
+    if (settings["-4"] && !old.AresHelmet && current.AresHelmet) {
+        print("Progression item: PosiedonSymbol");
+        return true;
+    }
+    if (settings["-5"] && !old.AthenaSymbol && current.AthenaSymbol) {
+        print("Progression item: PosiedonSymbol");
+        return true;
+    }
+    if (settings["-6"] && !old.DionysusCup && current.DionysusCup) {
+        print("Progression item: PosiedonSymbol");
+        return true;
+    }
+    if (settings["-7"] && !old.HeraPlume && current.HeraPlume) {
+        print("Progression item: PosiedonSymbol");
+        return true;
     }
     
     if (!vars.Completed8 && settings["-8"] && vars.oldmap == "village-act1" && current.LevelName == "Agora-gate") {
