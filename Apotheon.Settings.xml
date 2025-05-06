@@ -1,12 +1,18 @@
 <Settings>
   <Setting Id="42000" Label="============= Progression Tags ============="/>
-  <Setting Id="Symbol 1" Label="Symbol 1 (Apollo Lyre*)" ToolTip="Probably ApolloLyre" Parent="42000"/>
-  <Setting Id="Symbol 2" Label="Symbol 2 (Artemis Bow*)" ToolTip="Probably ArtemisBow" Parent="42000"/>
-  <Setting Id="Symbol 3" Label="Symbol 3 (Posiedon Trident*)" ToolTip="Probably PosiedonTrident" Parent="42000"/>
-  <Setting Id="Symbol 4" Label="Symbol 4 (Ares Helmet*)" ToolTip="Probably AresHelmet" Parent="42000"/>
-  <Setting Id="Symbol 5" Label="Symbol 5 (Athena Aegis*)" ToolTip="Probably AthenaAegis" Parent="42000"/>
-  <Setting Id="Symbol 6" Label="Symbol 6" ToolTip="X Probably HeraPlume" State="False" Parent="42000"/>
-  <Setting Id="Symbol 7" Label="Symbol 7" ToolTip="X Probably DionysusCup" State="False" Parent="42000"/>
+  <Setting Id="sym-demetersheaf" Label="DemeterSheaf" Parent="42000"/>
+  <Setting Id="sym-apollolyre" Label="ApolloLyre" Parent="42000"/>
+  <Setting Id="sym-artemisbow" Label="ArtemisBow" Parent="42000"/>
+  <Setting Id="sym-poseidon" Label="PosiedonSymbol" Parent="42000"/>
+  <Setting Id="sym-ares" Label="AresHelmet" Parent="42000"/>
+  <Setting Id="sym-athena" Label="AthenaSymbol" Parent="42000"/>
+  <Setting Id="sym-hera" Label="X HeraPlume" State="False" Parent="42000"/>
+  <Setting Id="persephone_warmth" Label="X Persephone" State="False" Parent="42000"/>
+  <Setting Id="sym-hermes" Label="X Hermes" State="False" Parent="42000"/>
+  <Setting Id="sym-zeus" Label="X Zeus" State="False" Parent="42000"/>
+  <Setting Id="sym-dionysus" Label="X DionysusCup" State="False" Parent="42000"/>
+  <Setting Id="sym-aproditecestus" Label="X AproditeCestus" State="False" Parent="42000"/>
+  <Setting Id="sym-hephaestus" Label="X Hephaestus" State="False" Parent="42000"/>
   <Setting Id="42001" Label="============= Dion ============="/>
   <Setting Id="1" Label="Rescue the Prisoners" ToolTip="Village\village-act1-boat" Parent="42001"/>
   <Setting Id="2" Label="Find the Blacksmith" ToolTip="Village\village-act1-blacksmith" Parent="42001"/>
@@ -28,7 +34,7 @@
   <Setting Id="31" Label="Cross the river Cocytus" ToolTip="Hades\Hades-cocytus" Parent="42004"/>
   <Setting Id="32" Label="Cross the river Phlegethon" ToolTip="Hades\Hades-phlegethon" Parent="42004"/>
   <Setting Id="33" Label="X Find Persephone" ToolTip="Hades\Hades-house" State="False" Parent="42004"/>
-  <Setting Id="13" Label="Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" Parent="42004"/>
+  <Setting Id="13" Label="X Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" State="False" Parent="42004"/>
   <Setting Id="42005" Label="============= Lyre of Apollo ============="/>
   <Setting Id="21" Label="X Find the Lyre of Apollo" ToolTip="Apollo\" State="False" Parent="42005"/>
   <Setting Id="22" Label="Escape the Dungeon" ToolTip="Apollo\Apollo" Parent="42005"/>
