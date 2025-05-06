@@ -161,7 +161,7 @@ split
     }
 
     string SymbolSplitKey = "Symbol " + current.SymbolAmount;
-    if (settings[SymbolSplitKey]) {
+    if (current.SymbolAmount != 0 && settings[SymbolSplitKey]) {
         if (vars.CompletedSplits.Add(SymbolSplitKey)) {
             print("objective split " + SymbolSplitKey);
             return true;
