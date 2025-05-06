@@ -12,6 +12,7 @@ startup
     vars.Completed8 = false;
     vars.Completed9 = false;
     vars.oldmap = "";
+    vars.symbolcount = 0;
 }
 
 onStart
@@ -20,6 +21,7 @@ onStart
     vars.Completed8 = false;
     vars.Completed9 = false;
     vars.oldmap = "";
+    vars.symbolcount = 0;
 }
 
 init
@@ -76,6 +78,8 @@ update
         // "OffhandInventory" = gameInstance, 0x2f4, 0x6d4
         // "ArmourInventory" = gameInstance, 0x2f4, 0x6d8
         // "SymbolInventory" = gameInstance, 0x2f4, 0x6dc
+        vars.Helper["SymbolAmount"] = vars.Helper.Make<int>(gameInstance, 0x2f4, 0x6dc, 0x14, 0xc); // gameInstance -> Player -> SymbolInventory -> InventorySlots -> Size/Count
+
         vars.Helper["Coins"] = vars.Helper.Make<float>(gameInstance, 0x2f4, 0x6f0);
         vars.Helper["Health"] = vars.Helper.Make<float>(gameInstance, 0x2f4, 0x6f4);
         vars.Helper["MaxHealth"] = vars.Helper.Make<float>(gameInstance, 0x2f4, 0x724);
@@ -145,52 +149,36 @@ split
         if (!Array.Exists(oldObjectives, o => o == obj))
         {
             string splitKey = obj.ToString();
-            if (settings[splitKey])
+            if (splitKey == "8" || settings[splitKey])
             {
-                print("objective split " + splitKey);
-                return vars.CompletedSplits.Add(splitKey);
+                bool IsNewAddition = vars.CompletedSplits.Add(splitKey);
+                if (IsNewAddition) {
+                    print("objective split " + splitKey);
+                    return true;
+                }
             }
         }
     }
 
-    if (settings["-1"] && !old.ApolloLyre && current.ApolloLyre) {
-        print("Progression item: ApolloLyre");
-        return true;
-    }
-    if (settings["-2"] && !old.ArtemisBow && current.ArtemisBow) {
-        print("Progression item: ArtemisBow");
-        return true;
-    }
-    if (settings["-3"] && !old.PosiedonSymbol && current.PosiedonSymbol) {
-        print("Progression item: PosiedonSymbol");
-        return true;
-    }
-    if (settings["-4"] && !old.AresHelmet && current.AresHelmet) {
-        print("Progression item: PosiedonSymbol");
-        return true;
-    }
-    if (settings["-5"] && !old.AthenaSymbol && current.AthenaSymbol) {
-        print("Progression item: PosiedonSymbol");
-        return true;
-    }
-    if (settings["-6"] && !old.DionysusCup && current.DionysusCup) {
-        print("Progression item: PosiedonSymbol");
-        return true;
-    }
-    if (settings["-7"] && !old.HeraPlume && current.HeraPlume) {
-        print("Progression item: PosiedonSymbol");
-        return true;
+    string SymbolSplitKey = "Symbol " + current.SymbolAmount;
+    if (settings[SymbolSplitKey]) {
+        if (vars.CompletedSplits.Add(SymbolSplitKey)) {
+            print("objective split " + SymbolSplitKey);
+            return true;
+        }
     }
     
-    if (!vars.Completed8 && settings["-8"] && vars.oldmap == "village-act1" && current.LevelName == "Agora-gate") {
-        print("first burn");
-        vars.Completed8 = true;
-        return true;
+    if (settings["-8"] && vars.oldmap == "village-act1" && current.LevelName == "Agora-gate") {
+        if (vars.CompletedSplits.Add("-8")) {
+            print("first burn");
+            return true;
+        }
     }
-    if (!vars.Completed9 && settings["-9"] && vars.oldmap == "Agora-market" && current.LevelName == "Agora") {
-        print("bought all items");
-        vars.Completed9 = true;
-        return true;
+    if (settings["-9"] && vars.oldmap == "Agora-market" && current.LevelName == "Agora") {
+        if (vars.CompletedSplits.Add("-9")) {
+            print("bought all items");
+            return true;
+        }
     }
 
     return false;
