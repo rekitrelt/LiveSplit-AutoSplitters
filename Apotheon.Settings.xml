@@ -28,7 +28,7 @@
   <Setting Id="31" Label="Cross the river Cocytus" ToolTip="Hades\Hades-cocytus" Parent="42004"/>
   <Setting Id="32" Label="Cross the river Phlegethon" ToolTip="Hades\Hades-phlegethon" Parent="42004"/>
   <Setting Id="33" Label="X Find Persephone" ToolTip="Hades\Hades-house" State="False" Parent="42004"/>
-  <Setting Id="13" Label="Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" State="False"  Parent="42004"/>
+  <Setting Id="13" Label="Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" Parent="42004"/>
   <Setting Id="42005" Label="============= Lyre of Apollo ============="/>
   <Setting Id="21" Label="X Find the Lyre of Apollo" ToolTip="Apollo\" State="False" Parent="42005"/>
   <Setting Id="22" Label="Escape the Dungeon" ToolTip="Apollo\Apollo" Parent="42005"/>
