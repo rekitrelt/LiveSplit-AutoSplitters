@@ -1,13 +1,22 @@
 <Settings>
+  <Setting Id="42000" Label="============= Progression Tags ============="/>
+  <Setting Id="-1" Label="ApolloLyre" Parent="42000"/>
+  <Setting Id="-2" Label="ArtemisBow" Parent="42000"/>
+  <Setting Id="-3" Label="PosiedonSymbol" Parent="42000"/>
+  <Setting Id="-4" Label="AresHelmet" Parent="42000"/>
+  <Setting Id="-5" Label="AthenaSymbol" Parent="42000"/>
+  <Setting Id="-6" Label="X DionysusCup" State="False" Parent="42000"/>
+  <Setting Id="-7" Label="X HeraPlume" State="False" Parent="42000"/>
   <Setting Id="42001" Label="============= Dion ============="/>
   <Setting Id="1" Label="Rescue the Prisoners" ToolTip="Village\village-act1-boat" Parent="42001"/>
   <Setting Id="2" Label="Find the Blacksmith" ToolTip="Village\village-act1-blacksmith" Parent="42001"/>
   <Setting Id="3" Label="Secure the Granary" ToolTip="Village\village-act1-market" Parent="42001"/>
   <Setting Id="4" Label="Find the Apothecary" ToolTip="Village\village-act1-academe" Parent="42001"/>
   <Setting Id="5" Label="Find the Hunter" ToolTip="Village\village-act1-hunter" Parent="42001"/>
-  <Setting Id="6" Label="Defeat the Tyrant" ToolTip="Village\village-act1" Parent="42001"/>
+  <Setting Id="6" Label="X Defeat the Tyrant" ToolTip="Village\village-act1" State="False" Parent="42001"/>
+  <Setting Id="-8" Label="First Burn" ToolTip="Fly upwards moment" Parent="42001"/>
   <Setting Id="42002" Label="============= Agora ============="/>
-  <Setting Id="8" Label="Market" ToolTip="Agora\Agora-market" Parent="42002"/>
+  <Setting Id="-9" Label="Market" ToolTip="Leaving Agora\Agora-market" Parent="42002"/>
   <Setting Id="42003" Label="============= Agora simple ============="/>
   <Setting Id="11" Label="X Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" State="False" Parent="42003"/>
   <Setting Id="7" Label="X Find the Lyre of Apollo" ToolTip="Agora\Apollo" State="False" Parent="42003"/>
@@ -19,7 +28,7 @@
   <Setting Id="31" Label="Cross the river Cocytus" ToolTip="Hades\Hades-cocytus" Parent="42004"/>
   <Setting Id="32" Label="Cross the river Phlegethon" ToolTip="Hades\Hades-phlegethon" Parent="42004"/>
   <Setting Id="33" Label="X Find Persephone" ToolTip="Hades\Hades-house" State="False" Parent="42004"/>
-  <Setting Id="13" Label="Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" Parent="42004"/>
+  <Setting Id="13" Label="Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" State="False"  Parent="42004"/>
   <Setting Id="42005" Label="============= Lyre of Apollo ============="/>
   <Setting Id="21" Label="X Find the Lyre of Apollo" ToolTip="Apollo\" State="False" Parent="42005"/>
   <Setting Id="22" Label="Escape the Dungeon" ToolTip="Apollo\Apollo" Parent="42005"/>
@@ -27,14 +36,14 @@
   <Setting Id="24" Label="Find Daphne" ToolTip="Apollo\Apollo-garden" Parent="42005"/>
   <Setting Id="25" Label="Free the Solar Steeds" ToolTip="Apollo\Apollo-stables" Parent="42005"/>
   <Setting Id="26" Label="Kill Apollo's Captains" ToolTip="Apollo\Apollo-guardhouse" Parent="42005"/>
-  <Setting Id="27" Label="Find the Lyre of Apollo" ToolTip="Apollo\Apollo-upperpalace" Parent="42005"/>
+  <Setting Id="27" Label="X Find the Lyre of Apollo" ToolTip="Apollo\Apollo-upperpalace" State="False" Parent="42005"/>
   <Setting Id="42006" Label="============= Bow of Artemis ============="/>
   <Setting Id="14" Label="X Find the Bow of Artemis" ToolTip="Forest\Forest" State="False" Parent="42006"/>
   <Setting Id="15" Label="Hunt the Direwolf" ToolTip="Forest\Forest" Parent="42006"/>
   <Setting Id="16" Label="Defeat the Chimera" ToolTip="Forest\Forest-caves" Parent="42006"/>
   <Setting Id="17" Label="Cleanse the Sanctuary" ToolTip="Forest\Forest-temple" Parent="42006"/>
   <Setting Id="18" Label="X Find the Nymphs" ToolTip="Forest\Forest" State="False" Parent="42006"/>
-  <Setting Id="19" Label="Find the Bow of Artemis" ToolTip="Forest\Forest-grove" Parent="42006"/>
+  <Setting Id="19" Label="X Find the Bow of Artemis" ToolTip="Forest\Forest-grove" State="False" Parent="42006"/>
   <Setting Id="42007" Label="============= Dion (village-act2) ============="/>
   <Setting Id="35" Label="X Return to the Olympian Gates" ToolTip="\Agora-gate" State="False" Parent="42007"/>
   <Setting Id="36" Label="X Reach the Temple" ToolTip="VillageAct2\village-act2" State="False" Parent="42007"/>
@@ -45,20 +54,20 @@
   <Setting Id="51" Label="Destroy the Pillar of Quakes" ToolTip="Sea\" Parent="42008"/>
   <Setting Id="52" Label="Calm the Seas" ToolTip="Sea\" Parent="42008"/>
   <Setting Id="389" Label="X Return to the Olympian Gates" ToolTip="\Agora-gate" State="False" Parent="42008"/>
-  <Setting Id="14345" Label="Find the Trident of Poseidon" ToolTip="Sea\Sea-hub" Parent="42008"/>
+  <Setting Id="14345" Label="X Find the Trident of Poseidon" ToolTip="Sea\Sea-hub" State="False" Parent="42008"/>
   <Setting Id="42009" Label="============= Crest of Ares ============="/>
   <Setting Id="38" Label="Find the Crest of Ares" ToolTip="Acropolis\Ares" Parent="42009"/>
   <Setting Id="41" Label="Defeat Otus and Ephialtes" ToolTip="Ares\Ares-OtusEphialtes" Parent="42009"/>
   <Setting Id="42" Label="Defeat Phobos and Deimos" ToolTip="Ares\Ares-PhobosDeimos" Parent="42009"/>
   <Setting Id="43" Label="Ascend the Chasm" ToolTip="Ares\Ares-Eris" Parent="42009"/>
   <Setting Id="44" Label="Defeat Diomedes" ToolTip="Ares\Ares-Diomedes" Parent="42009"/>
-  <Setting Id="45" Label="Defeat Ares" ToolTip="Ares\Ares" Parent="42009"/>
+  <Setting Id="45" Label="X Defeat Ares" ToolTip="Ares\Ares" State="False" Parent="42009"/>
   <Setting Id="42010" Label="============= Aegis of Athena ============="/>
   <Setting Id="40" Label="X Find the Aegis of Athena" ToolTip="Acropolis\Athena" State="False" Parent="42010"/>
   <Setting Id="46" Label="Find Labyrinth Key" ToolTip="Athena\Athena" Parent="42010"/>
   <Setting Id="47" Label="Find Labyrinth Key" ToolTip="Athena\Athena" Parent="42010"/>
   <Setting Id="48" Label="Find Labyrinth Key" ToolTip="Athena\Athena" Parent="42010"/>
-  <Setting Id="49" Label="Find the Aegis of Athena" ToolTip="Athena\Athena" Parent="42010"/>
+  <Setting Id="49" Label="X Find the Aegis of Athena" ToolTip="Athena\Athena" State="False" Parent="42010"/>
   <Setting Id="42011" Label="============= Dion (village-act3) ============="/>
   <Setting Id="836" Label="X Find Hera" ToolTip="VillageAct3\village-act3" State="False" Parent="42011"/>
   <Setting Id="42012" Label="============= Zeus ============="/>
