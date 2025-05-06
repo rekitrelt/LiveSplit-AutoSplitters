@@ -11,6 +11,7 @@ startup
     vars.CompletedSplits = new HashSet<string>();
     vars.Completed8 = false;
     vars.Completed9 = false;
+    vars.oldmap = "";
 }
 
 onStart
@@ -18,6 +19,7 @@ onStart
     vars.CompletedSplits.Clear();
     vars.Completed8 = false;
     vars.Completed9 = false;
+    vars.oldmap = "";
 }
 
 init
@@ -125,6 +127,9 @@ update
         vars.GameInstance = IntPtr.Zero;
         return false;
     }
+    if (old.LevelName != current.LevelName) {
+        vars.oldmap = old.LevelName;
+    }
 }
 
 split
@@ -142,7 +147,7 @@ split
             string splitKey = obj.ToString();
             if (settings[splitKey])
             {
-                print("1");
+                print("objective split");
                 return vars.CompletedSplits.Add(splitKey);
             }
         }
@@ -156,17 +161,17 @@ split
         (settings["-6"] && !old.DionysusCup && current.DionysusCup) ||
         (settings["-7"] && !old.HeraPlume && current.HeraPlume)
     ) {
-        print("2");
+        print("found a progression based item");
         return true; 
     }
     
-    if (!vars.Completed8 && settings["-8"] && old.LevelName == "village-act1" && current.LevelName == "Agora-gate") {
-        print("3");
+    if (!vars.Completed8 && settings["-8"] && vars.oldmap == "village-act1" && current.LevelName == "Agora-gate") {
+        print("first burn");
         vars.Completed8 = true;
         return true;
     }
-    if (!vars.Completed9 && settings["-9"] && old.LevelName == "Agora-market" && current.LevelName == "Agora") {
-        print("4");
+    if (!vars.Completed9 && settings["-9"] && vars.oldmap == "Agora-market" && current.LevelName == "Agora") {
+        print("bought all items");
         vars.Completed9 = true;
         return true;
     }
