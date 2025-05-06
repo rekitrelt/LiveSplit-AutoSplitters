@@ -14,11 +14,11 @@
   <Setting Id="4" Label="Find the Apothecary" ToolTip="Village\village-act1-academe" Parent="42001"/>
   <Setting Id="5" Label="Find the Hunter" ToolTip="Village\village-act1-hunter" Parent="42001"/>
   <Setting Id="6" Label="X Defeat the Tyrant" ToolTip="Village\village-act1" State="False" Parent="42001"/>
-  <Setting Id="-8" Label="First Burn" ToolTip="Fly upwards moment" Parent="42001"/>
+  <Setting Id="-8" Label="X First Burn" ToolTip="Fly upwards moment" State="False" Parent="42001"/>
   <Setting Id="42002" Label="============= Agora ============="/>
   <Setting Id="-9" Label="Market" ToolTip="Leaving Agora\Agora-market" Parent="42002"/>
   <Setting Id="42003" Label="============= Agora simple ============="/>
-  <Setting Id="11" Label="X Find the Sheaf of Demeter" ToolTip="Agora\Agora-Demeter" State="False" Parent="42003"/>
+  <Setting Id="11" Label="First Burn" ToolTip="Fly upwards moment" Parent="42003"/>
   <Setting Id="7" Label="X Find the Lyre of Apollo" ToolTip="Agora\Apollo" State="False" Parent="42003"/>
   <Setting Id="9" Label="X Find the Bow of Artemis" ToolTip="Agora\Forest" State="False" Parent="42003"/>
   <Setting Id="42004" Label="============= Sheaf of Demeter ============="/>
