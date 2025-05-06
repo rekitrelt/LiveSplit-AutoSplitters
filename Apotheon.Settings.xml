@@ -1,12 +1,12 @@
 <Settings>
   <Setting Id="42000" Label="============= Progression Tags ============="/>
-  <Setting Id="-1" Label="ApolloLyre" Parent="42000"/>
-  <Setting Id="-2" Label="ArtemisBow" Parent="42000"/>
-  <Setting Id="-3" Label="PosiedonSymbol" Parent="42000"/>
-  <Setting Id="-4" Label="AresHelmet" Parent="42000"/>
-  <Setting Id="-5" Label="AthenaSymbol" Parent="42000"/>
-  <Setting Id="-6" Label="X DionysusCup" State="False" Parent="42000"/>
-  <Setting Id="-7" Label="X HeraPlume" State="False" Parent="42000"/>
+  <Setting Id="Symbol 1" Label="Symbol 1 (Apollo Lyre*)" ToolTip="Probably ApolloLyre" Parent="42000"/>
+  <Setting Id="Symbol 2" Label="Symbol 2 (Artemis Bow*)" ToolTip="Probably ArtemisBow" Parent="42000"/>
+  <Setting Id="Symbol 3" Label="Symbol 3 (Posiedon Trident*)" ToolTip="Probably PosiedonTrident" Parent="42000"/>
+  <Setting Id="Symbol 4" Label="Symbol 4 (Ares Helmet*)" ToolTip="Probably AresHelmet" Parent="42000"/>
+  <Setting Id="Symbol 5" Label="Symbol 5 (Athena Aegis*)" ToolTip="Probably AthenaAegis" Parent="42000"/>
+  <Setting Id="Symbol 6" Label="Symbol 6" ToolTip="X Probably HeraPlume" State="False" Parent="42000"/>
+  <Setting Id="Symbol 7" Label="Symbol 7" ToolTip="X Probably DionysusCup" State="False" Parent="42000"/>
   <Setting Id="42001" Label="============= Dion ============="/>
   <Setting Id="1" Label="Rescue the Prisoners" ToolTip="Village\village-act1-boat" Parent="42001"/>
   <Setting Id="2" Label="Find the Blacksmith" ToolTip="Village\village-act1-blacksmith" Parent="42001"/>
