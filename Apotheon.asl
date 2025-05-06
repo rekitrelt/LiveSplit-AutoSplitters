@@ -9,11 +9,15 @@ startup
     vars.Helper.AlertLoadless();
 
     vars.CompletedSplits = new HashSet<string>();
+    vars.Completed8 = false;
+    vars.Completed9 = false;
 }
 
 onStart
 {
     vars.CompletedSplits.Clear();
+    vars.Completed8 = false;
+    vars.Completed9 = false;
 }
 
 init
@@ -136,8 +140,9 @@ split
         if (!Array.Exists(oldObjectives, o => o == obj))
         {
             string splitKey = obj.ToString();
-            if (settings[splitKey] == null || settings[splitKey] == true)
+            if (settings[splitKey])
             {
+                print("1");
                 return vars.CompletedSplits.Add(splitKey);
             }
         }
@@ -149,10 +154,22 @@ split
         (settings["-4"] && !old.AresHelmet && current.AresHelmet) ||
         (settings["-5"] && !old.AthenaSymbol && current.AthenaSymbol) ||
         (settings["-6"] && !old.DionysusCup && current.DionysusCup) ||
-        (settings["-7"] && !old.HeraPlume && current.HeraPlume) ||
-        (settings["-8"] && old.LevelName == "village-act1" && current.LevelName == "Agora-gate") ||
-        (settings["-9"] && old.LevelName == "Agora-market" && current.LevelName == "Agora")
-    ) return true;
+        (settings["-7"] && !old.HeraPlume && current.HeraPlume)
+    ) {
+        print("2");
+        return true; 
+    }
+    
+    if (!vars.Completed8 && settings["-8"] && old.LevelName == "village-act1" && current.LevelName == "Agora-gate") {
+        print("3");
+        vars.Completed8 = true;
+        return true;
+    }
+    if (!vars.Completed9 && settings["-9"] && old.LevelName == "Agora-market" && current.LevelName == "Agora") {
+        print("4");
+        vars.Completed9 = true;
+        return true;
+    }
 
     return false;
 }
