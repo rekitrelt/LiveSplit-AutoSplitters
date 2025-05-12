@@ -147,39 +147,74 @@ update
     if (vars.SymbolsScanned == null)
         vars.SymbolsScanned = new HashSet<string>();
 
-    var newSymbols = new List<string>();
+    vars.newSymbols.Clear(); 
+
+    Func<int, int> GetGroupCount = i =>
+        vars.Helper.Read<int>(vars.GameInstance, 0x2f4, 0x6dc, 0x1c, 0x8, 0x8 + i * 0x10, 0x4, 0x4);
+
+    // Function to get group pointer
+    Func<int, int, IntPtr> GetGroupPtr = (i, j) =>
+        vars.Helper.Read<IntPtr>(vars.GameInstance, 0x2f4, 0x6dc, 0x1c, 0x8, 0x8 + i * 0x10, 0x4, 0x8 + j * 4, 0x14, 0x4);
+
+    // Function to read classfile string
+    Func<int, int, int, string> GetClassfile = (i, j, k) =>
+        vars.Helper.ReadString(128, ReadStringType.UTF16,
+            vars.GameInstance, 0x2f4, 0x6dc, 0x1c, 0x8,
+            0x8 + i * 0x10, 0x4, 0x8 + j * 4, 0x14, 0x4,
+            0x8 + k * 4, 0x10, 0xA4, 0x08);
 
     var symbolInvPtr = vars.Helper.Read<IntPtr>(vars.GameInstance, 0x2f4, 0x6dc); // SymbolInventory
     if (symbolInvPtr != IntPtr.Zero)
     {
-        for (int i = 0; i < 3; i++)
+        bool anySymbolsEnabled = false;
+        string[] symbolKeys = {
+            "sym-demetersheaf", "sym-apollolyre", "sym-artemisbow", "sym-poseidon", "sym-ares", "sym-athena", "sym-hera", "persephone_warmth", "sym-hermes", "sym-zeus", "sym-dionysus", "sym-aproditecestus", "sym-hephaestus"
+        };
+
+        foreach (string key in symbolKeys)
         {
-            int groupCount = vars.Helper.Read<int>(vars.GameInstance, 0x2f4, 0x6dc, 0x1c, 0x8, 0x8 + i * 0x10, 0x4, 0x4);
-            //print("Entries[{"+i+"}] groupCount = {"+groupCount+"}");
-            if (groupCount > 0) {
+            if (settings[key])
+            {
+                anySymbolsEnabled = true;
+                break;
+            }
+        }
+
+        if (anySymbolsEnabled) {
+            for (int i = 0; i < 3; i++)
+            {
+                var basePtr_i = vars.Helper.Read<IntPtr>(vars.GameInstance, 0x2f4, 0x6dc, 0x1c, 0x8, 0x8 + i * 0x10);
+                if (basePtr_i == IntPtr.Zero) continue;
+
+                int groupCount = vars.Helper.Read<int>(basePtr_i, 0x4, 0x4);
+                if (groupCount <= 0) continue;
+
                 for (int j = 0; j < groupCount; j++)
                 {
-                    var groupPtr = vars.Helper.Read<IntPtr>(vars.GameInstance, 0x2f4, 0x6dc, 0x1c, 0x8, 0x8 + i * 0x10, 0x4, 0x8 + j * 4, 0x14, 0x4); // ItemGroup*
+                    var groupPtr = vars.Helper.Read<IntPtr>(basePtr_i, 0x4, 0x8 + j * 4, 0x14, 0x4);
                     if (groupPtr == IntPtr.Zero) continue;
 
                     int itemCount = vars.Helper.Read<int>(groupPtr, 0x4);
-                    //print("  Group " + j +" has " + itemCount + " items");
-
                     for (int k = 0; k < itemCount; k++)
                     {
-                        string classfile = vars.Helper.ReadString(128, ReadStringType.UTF16, vars.GameInstance, 0x2f4, 0x6dc, 0x1c, 0x8, 0x8 + i * 0x10, 0x4, 0x8 + j * 4, 0x14, 0x4, 0x8 + k * 4, 0x10, 0xA4, 0x08); // ItemGroup*
-                        if (classfile != "" && classfile != null && classfile.StartsWith("Symbols\\") && !vars.SymbolsScanned.Contains(classfile)) {
-                            //print("classfilePtr: " + groupPtr.ToString("X"));
-                            //print("classfile: " + classfile);
-                            newSymbols.Add(classfile.Substring(8));
+                        var itemPtr = vars.Helper.Read<IntPtr>(groupPtr, 0x8 + k * 4, 0x10, 0xA4, 0x08);
+                        if (itemPtr == IntPtr.Zero) continue;
+
+                        string classfile = vars.Helper.ReadString(128, ReadStringType.UTF16, itemPtr);
+                        if (!string.IsNullOrEmpty(classfile)
+                            && classfile.StartsWith("Symbols\\")
+                            && !vars.SymbolsScanned.Contains(classfile))
+                        {
+                            vars.newSymbols.Add(classfile.Substring(8));
                         }
                     }
                 }
             }
-        }
-        vars.NewSymbolFinds = newSymbols;
-        foreach (string s in newSymbols) {
-            vars.SymbolsScanned.Add(s);
+
+
+            vars.NewSymbolFinds = vars.newSymbols;
+            foreach (string s in vars.newSymbols)
+                vars.SymbolsScanned.Add(s);
         }
     }
 }
@@ -194,13 +229,28 @@ split
 
     if (vars.NewSymbolFinds != null)
     {
-        foreach (string symbol in vars.NewSymbolFinds)
+        bool anySymbolsEnabled = false;
+        string[] symbolKeys = {
+            "sym-demetersheaf", "sym-apollolyre", "sym-artemisbow", "sym-poseidon", "sym-ares", "sym-athena", "sym-hera", "persephone_warmth", "sym-hermes", "sym-zeus", "sym-dionysus", "sym-aproditecestus", "sym-hephaestus"
+        };
+
+        foreach (string key in symbolKeys)
         {
-            if (settings[symbol]) {
-                if (vars.CompletedSplits.Add(symbol))
-                {
-                    print("Split for symbol: " + symbol);
-                    return true;
+            if (settings[key])
+            {
+                anySymbolsEnabled = true;
+                break;
+            }
+        }
+        if (anySymbolsEnabled) {
+            foreach (string symbol in vars.NewSymbolFinds)
+            {
+                if (settings[symbol]) {
+                    if (vars.CompletedSplits.Add(symbol))
+                    {
+                        print("Split for symbol: " + symbol);
+                        return true;
+                    }
                 }
             }
         }
