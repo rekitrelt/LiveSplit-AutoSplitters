@@ -38,6 +38,24 @@ update
 
         // "Player" = gameInstance, 0x2f4
         var pPlayer = 0x2f4;
+        // "Class" = gameInstance, pPlayer, 0x664
+        var pClass = 0x664;
+        // "Body" = gameInstance, 0x48
+        var pBody = 0x48;
+
+        vars.Helper["GodDeath"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x2a0);
+        vars.Helper["Coins"] = vars.Helper.Make<float>(gameInstance, pPlayer, 0x6f0);
+        //vars.Helper["BaseHands"] = vars.Helper.MakeString(128, ReadStringType.UTF16, gameInstance, pPlayer, pClass, 0x54, 0x8);
+        vars.Helper["InDialog"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x7f3);
+        vars.Helper["OtherScreenHasFocus"] = vars.Helper.Make<bool>(gameInstance, 0x30);
+        vars.Helper["IsIngamePause"] = vars.Helper.Make<bool>(gameInstance, 0x3A);
+        vars.Helper["GameTime"] = vars.Helper.Make<double>(gameInstance, 0x80);
+        vars.Helper["LevelName"] = vars.Helper.MakeString(128, ReadStringType.UTF16, gameInstance, 0x218, 0x8);
+        vars.Helper["FadeTransition"] = vars.Helper.Make<float>(gameInstance, 0x3C4);
+        vars.Helper["IsLoading"] = vars.Helper.Make<bool>(gameInstance, 0x415);
+        vars.Helper["ConsoleVisible"] = vars.Helper.Make<bool>(gameInstance, 0x20, 0x134, 0xa2);
+
+        /*
         vars.Helper["AllowPickup"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0xc);
         vars.Helper["PosX"] = vars.Helper.Make<float>(gameInstance, pPlayer, 0xf0);
         vars.Helper["PosY"] = vars.Helper.Make<float>(gameInstance, pPlayer, 0xf4);
@@ -54,9 +72,6 @@ update
 
         vars.Helper["PotionSoundName"] = vars.Helper.MakeString(128, ReadStringType.UTF16, gameInstance, pPlayer, 0x5bc, 0x4, 0x8); // is the 0x4 needed?
         
-        // "Class" = gameInstance, pPlayer, 0x664
-        var pClass = 0x664;
-        vars.Helper["BaseHands"] = vars.Helper.MakeString(128, ReadStringType.UTF16, gameInstance, pPlayer, pClass, 0x54, 0x8);
         vars.Helper["HP"] = vars.Helper.Make<float>(gameInstance, pPlayer, pClass, 0x170);
         vars.Helper["StaminaRecharge"] = vars.Helper.Make<float>(gameInstance, pPlayer, pClass, 0x174);
         vars.Helper["StaminaRechargeTimeAfterAttack"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x178);
@@ -67,7 +82,6 @@ update
         vars.Helper["WeaponUpgradeBuy"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x287);
         vars.Helper["NoWallCollide"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x291);
         vars.Helper["NoJumping"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x296);
-        vars.Helper["GodDeath"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x2a0);
         vars.Helper["NoDamage"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x2a3);
         vars.Helper["IgnoreAllCollisions"] = vars.Helper.Make<bool>(gameInstance, pPlayer, pClass, 0x2a4);
 
@@ -79,7 +93,6 @@ update
         // "SymbolInventory" = gameInstance, pPlayer, 0x6dc
         vars.Helper["SymbolAmount"] = vars.Helper.Make<int>(gameInstance, pPlayer, 0x6dc, 0x14, 0xc); // gameInstance -> gameInstance, pPlayer -> SymbolInventory -> InventorySlots -> Size/Count
 
-        vars.Helper["Coins"] = vars.Helper.Make<float>(gameInstance, pPlayer, 0x6f0);
         vars.Helper["Health"] = vars.Helper.Make<float>(gameInstance, pPlayer, 0x6f4);
         vars.Helper["MaxHealth"] = vars.Helper.Make<float>(gameInstance, pPlayer, 0x724);
         vars.Helper["Armour"] = vars.Helper.Make<float>(gameInstance, pPlayer, 0x6f8);
@@ -96,31 +109,28 @@ update
         vars.Helper["AresHelmet"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x7ea);
         vars.Helper["HeraPlume"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x7eb);
 
-        vars.Helper["InDialog"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x7f3);
         vars.Helper["HasShield"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x7fc);
         vars.Helper["AllowShielding"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x7fd);
         vars.Helper["FindCharacterEnemy"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x7fe);
         vars.Helper["Rolling"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x828);
         vars.Helper["LastOnground"] = vars.Helper.Make<bool>(gameInstance, pPlayer, 0x82b); // yes its a bool
 
-        // "Body" = gameInstance, 0x48
-        vars.Helper["TotalForce"] = vars.Helper.Make<float>(gameInstance, 0x48, 0x24);
-       // vars.Helper["Force"] = vars.Helper.Make<Vector2>(gameInstance, 0x48, 0x60);
+        vars.Helper["TotalForce"] = vars.Helper.Make<float>(gameInstance, pBody, 0x24);
+       // vars.Helper["Force"] = vars.Helper.Make<Vector2>(gameInstance, pBody, 0x60);
+        */
 
-        vars.Helper["OtherScreenHasFocus"] = vars.Helper.Make<bool>(gameInstance, 0x30);
-        vars.Helper["IsIngamePause"] = vars.Helper.Make<bool>(gameInstance, 0x3A);
-        vars.Helper["GameTime"] = vars.Helper.Make<double>(gameInstance, 0x80);
-        vars.Helper["LevelName"] = vars.Helper.MakeString(128, ReadStringType.UTF16, gameInstance, 0x218, 0x8);
-        vars.Helper["FadeTransition"] = vars.Helper.Make<float>(gameInstance, 0x3C4);
-        vars.Helper["IsLoading"] = vars.Helper.Make<bool>(gameInstance, 0x415);
-        vars.Helper["ConsoleVisible"] = vars.Helper.Make<bool>(gameInstance, 0x20, 0x134, 0xa2);
 
         vars.GameInstance = gameInstance;
 
         print(vars.Helper.Read<IntPtr>(gameInstance).ToString("X"));
     }
     int count = vars.Helper.Read<int>(vars.GameInstance, 0x1BC, 0x0C);
-    current.CompletedObjectives = vars.Helper.ReadSpan<int>(count, vars.GameInstance, 0x1BC, 0x04, 0x08);
+    if (count > 0 && count < 1000) {
+        current.CompletedObjectives = vars.Helper.ReadSpan<int>(count, vars.GameInstance, 0x1BC, 0x04, 0x08);
+    }
+    else {
+        current.CompletedObjectives = Array.Empty<int>();
+    }
 
     vars.Helper.Update();
     vars.Helper.MapPointers();
